@@ -1,26 +1,63 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { apis } from '../utils/api';
 
 const Login = () => {
-  const [inputId, setInputId] = useState('');
-  const [inputPw, setInputPw] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  // const idRef = useRef(null);
-  // const pwRef = useRef(null);
+  const navigate = useNavigate();
 
   const onChangeId = (e) => {
-    setInputId(e.target.value);
+    setEmail(e.target.value);
   };
 
   const onChangePw = (e) => {
-    setInputPw(e.target.value);
+    setPassword(e.target.value);
   };
 
-  const onLogin = (e) => {
+  const onLogin = async (e) => {
     e.preventDefault();
-    // console.log(idRef.current?.value);
+    const userInfo = {
+      email,
+      password,
+    };
+
+    try {
+      const res = await apis.PostSignIn(userInfo);
+      console.log('res :>> ', res);
+      if (!window.localStorage.getItem('userJWT')) {
+        window.localStorage.setItem('userJWT', res.data.access_token);
+      }
+      alert('로그인에 성공했습니다.');
+      navigate('/todo');
+    } catch (error) {
+      console.error('error :>> ', error.response.data.message);
+      alert(error.response.data.message);
+    }
   };
 
-  const loginCondition = inputId.includes('@') && inputPw.length >= 8;
+  const onSignUp = async (e) => {
+    e.preventDefault();
+    const userInfo = {
+      email,
+      password,
+    };
+
+    try {
+      const res = await apis.PostSignUp(userInfo);
+      console.log('res :>> ', res);
+      if (!window.localStorage.getItem('userJWT')) {
+        window.localStorage.setItem('userJWT', res.data.access_token);
+        alert('회원가입 성공입니다.');
+      }
+    } catch (error) {
+      console.error('error :>> ', error.response.data.message);
+      alert(error.response.data.message);
+    }
+  };
+
+  const loginCondition = email.includes('@') && password.length >= 8;
 
   return (
     <>
@@ -34,17 +71,19 @@ const Login = () => {
         />
         <input
           onChange={onChangePw}
-          type='text'
+          type='password'
           placeholder='비밀번호'
           required
         />
-        <button onClick={onLogin} disabled>
+        <button onClick={onLogin} disabled={!loginCondition}>
           로그인
         </button>
       </form>
 
       <div>
-        <button>회원가입</button>
+        <button onClick={onSignUp} disabled={!loginCondition}>
+          회원가입
+        </button>
       </div>
     </>
   );
