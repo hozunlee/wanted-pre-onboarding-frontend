@@ -21,6 +21,18 @@ const Mark = ({ todo, getTodoList }) => {
     }
   };
 
+  const onUpdateCheckBox = async () => {
+    setIsCheck((prev) => !prev);
+    try {
+      await apis.updateTodo(todo.id, {
+        todo: urlRef.current?.value ?? todo.todo,
+        isCompleted: !isCheck,
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const onDelete = async () => {
     try {
       await apis.deleteTodo(todo.id);
@@ -39,9 +51,14 @@ const Mark = ({ todo, getTodoList }) => {
               type='text'
               ref={urlRef}
               className='mb-2 w-full rounded p-1.5'
-              placeholder='수정해봉가.'
+              placeholder={todo.todo}
             />
-            <button onClick={onUpdate}>제출</button>
+            <button
+              onClick={onUpdate}
+              className='mb-1 rounded-full bg-rose-400 p-2 hover:bg-rose-500'
+            >
+              <PencilSquareIcon className='w-4 text-white' />
+            </button>
           </form>
         </>
       ) : (
@@ -49,13 +66,11 @@ const Mark = ({ todo, getTodoList }) => {
           <div>{todo.todo}</div>
           <div>
             <input
+              onClick={onUpdateCheckBox}
               type='checkbox'
-              name=''
-              id=''
+              name='isUpdateCheck'
+              id='isUpdateCheck'
               checked={isCheck}
-              onChange={() => {
-                setIsCheck((prev) => !prev);
-              }}
             />
           </div>
         </div>
