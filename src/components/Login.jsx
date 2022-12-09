@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { apis } from '../utils/api';
 
+import { useUserInfo } from '../hooks/userInfo-context';
+
 const Login = () => {
+  const { JWTInfo, addJWT } = useUserInfo();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -28,6 +31,7 @@ const Login = () => {
       console.log('res :>> ', res);
       if (!window.localStorage.getItem('userJWT')) {
         window.localStorage.setItem('userJWT', res.data.access_token);
+        addJWT({ JWT: res.data.access_token });
       }
       alert('로그인에 성공했습니다.');
       navigate('/todo');

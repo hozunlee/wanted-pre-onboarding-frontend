@@ -5,9 +5,12 @@ import { apis } from '../utils/api';
 import AddMarkInput from '../components/AddMarkInput';
 import Mark from '../components/Mark';
 
+import { useUserInfo } from '../hooks/userInfo-context';
+
 const Todo = () => {
-  const [isLoading, setIsLoading] = useState(true);
   const [todoList, setTodoList] = useState([]);
+
+  const { JWTInfo } = useUserInfo();
 
   const onSubmitHandler = (todoWord) => {
     (async () => {
@@ -22,16 +25,16 @@ const Todo = () => {
   };
 
   const getTodoList = async (signal) => {
-    const { data } = await apis.getTodos(signal);
+    const { data } = await apis.getTodos(signal, JWTInfo.JWT);
     setTodoList(data);
   };
 
+  console.log('JWTInfo :>> ', JWTInfo);
   useEffect(() => {
     const ctl = new AbortController();
     const { signal } = ctl;
     try {
       getTodoList(signal);
-      setIsLoading(false);
     } catch (e) {
       console.error(e);
     }

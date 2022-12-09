@@ -5,15 +5,19 @@ import { Route, Routes } from 'react-router-dom';
 import Main from './page/Main';
 import Todo from './page/Todo';
 
+import { UserInfoProvider } from './hooks/userInfo-context';
+
 function App() {
   return (
     <>
-      <Router>
-        <Routes>
-          <Route index path='/' element={<Main />} />
-          <Route path='/todo' element={<Todo />} />
-        </Routes>
-      </Router>
+      <UserInfoProvider>
+        <Router>
+          <Routes>
+            <Route index path='/' element={<Main />} />
+            <Route path='/todo' element={<Todo />} />
+          </Routes>
+        </Router>
+      </UserInfoProvider>
     </>
   );
 }

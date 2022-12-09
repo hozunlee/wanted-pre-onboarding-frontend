@@ -2,10 +2,15 @@ import React, { useReducer, useRef, useState } from 'react';
 import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/solid';
 import { apis } from '../utils/api';
 
+import { useUserInfo } from '../hooks/userInfo-context';
+
 const Mark = ({ todo, getTodoList }) => {
   const [isCheck, setIsCheck] = useState(todo?.isCompleted);
   const [isEditing, toggleEditing] = useReducer((pre) => !pre, !todo.id);
   const urlRef = useRef(null);
+
+  const { JWTInfo, addJWT } = useUserInfo();
+  // console.log('🚀 ~ file: Mark.jsx:13 ~ Mark ~ JWTInfo', JWTInfo);
 
   const onUpdate = async (e) => {
     e.preventDefault();
@@ -70,7 +75,7 @@ const Mark = ({ todo, getTodoList }) => {
               type='checkbox'
               name='isUpdateCheck'
               id='isUpdateCheck'
-              checked={isCheck}
+              defaultChecked={isCheck}
             />
           </div>
         </div>
