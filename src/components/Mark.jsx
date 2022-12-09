@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef, useState } from 'react';
+import React, { useReducer, useRef, useState } from 'react';
 import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/solid';
 import { apis } from '../utils/api';
 
@@ -55,9 +55,9 @@ const Mark = ({ todo, getTodoList }) => {
             />
             <button
               onClick={onUpdate}
-              className='mb-1 rounded-full bg-rose-400 p-2 hover:bg-rose-500'
+              className='mb-1 rounded-full bg-blue-400 p-2 hover:bg-blue-500'
             >
-              <PencilSquareIcon className='w-4 text-white' />
+              <PencilSquareIcon className='w-4 h-4 text-white' />
             </button>
           </form>
         </>

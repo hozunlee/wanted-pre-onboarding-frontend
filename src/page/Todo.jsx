@@ -21,14 +21,16 @@ const Todo = () => {
     })();
   };
 
-  const getTodoList = async () => {
-    const { data } = await apis.getTodos();
+  const getTodoList = async (signal) => {
+    const { data } = await apis.getTodos(signal);
     setTodoList(data);
   };
 
   useEffect(() => {
+    const ctl = new AbortController();
+    const { signal } = ctl;
     try {
-      getTodoList();
+      getTodoList(signal);
       setIsLoading(false);
     } catch (e) {
       console.error(e);

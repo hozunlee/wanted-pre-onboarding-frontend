@@ -16,7 +16,7 @@ export const apis = {
   PostSignIn: (data) => api.post('/auth/signin', data), // 로그인
 
   //TODO
-  getTodos: () => api.get('/todos'), //Todo page 접속 시
+  getTodos: (signal) => api.get('/todos', { signal }), //Todo page 접속 시
   createTodo: (todo) => api.post('todos', todo), // 새로운 TODo 추가
   updateTodo: (id, updateTodo) => api.put(`/todos/${id}`, updateTodo),
   deleteTodo: (id) => api.delete(`/todos/${id}`),
