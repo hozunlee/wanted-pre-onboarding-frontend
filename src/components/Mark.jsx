@@ -1,5 +1,9 @@
 import React, { useReducer, useRef, useState } from 'react';
-import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/solid';
+import {
+  PencilSquareIcon,
+  TrashIcon,
+  ArrowPathRoundedSquareIcon,
+} from '@heroicons/react/24/solid';
 import { apis } from '../utils/api';
 
 import { useUserInfo } from '../hooks/userInfo-context';
@@ -66,11 +70,8 @@ const Mark = ({ todo, getTodoList }) => {
               className='mb-2 w-full rounded p-1.5'
               placeholder={todo.todo}
             />
-            <button
-              onClick={onUpdate}
-              className='mr-2 mb-1 rounded-full bg-blue-400 p-2 hover:bg-blue-500'
-            >
-              <PencilSquareIcon className='w-6 text-white' />
+            <button onClick={onUpdate} className='mr-2 mb-1 rounded-full px-2 '>
+              <ArrowPathRoundedSquareIcon className='  text-black w-5' />
             </button>
           </form>
         </>
