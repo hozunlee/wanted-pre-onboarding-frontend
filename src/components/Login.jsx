@@ -37,7 +37,7 @@ const Login = () => {
       navigate('/todo');
     } catch (error) {
       console.error('error :>> ', error.response.data.message);
-      alert(error.response.data.message);
+      alert('로그인 정보를 확인해주세요.');
     }
   };
 
