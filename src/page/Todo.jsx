@@ -40,12 +40,15 @@ const Todo = () => {
   };
 
   useEffect(() => {
-    const ctl = new AbortController();
-    const { signal } = ctl;
-    try {
-      getTodoList(signal);
-    } catch (e) {
-      console.error(e);
+    if (!JWTInfo.JWT) navigate('/');
+    else {
+      const ctl = new AbortController();
+      const { signal } = ctl;
+      try {
+        getTodoList(signal);
+      } catch (e) {
+        console.error(e);
+      }
     }
   }, []);
 
