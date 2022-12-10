@@ -66,7 +66,7 @@ const Login = () => {
   return (
     <>
       <div className='bg-white items-center text-center'>
-        <div className='mx-16 mt-16 text-5xl'>살아갈 결심</div>
+        <div className='mx-16 mt-16 text-5xl font-extrabold'>살아갈 결심</div>
         <div className='m-3'>To-Do list</div>
         <form className=''>
           <div className='  flex flex-col justify-center items-center w-full'>

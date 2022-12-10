@@ -54,18 +54,28 @@ const Todo = () => {
 
   return (
     <>
-      <div className='text-xl bg-orange-900'>
-        나는야 투두 <button onClick={onLogout}>로그아웃</button>
+      <div className='items-center text-center'>
+        <div className='text-3xl mx-16 mt-16 font-extrabold'>살아갈 결심</div>
+        <div className='m-3'>To-Do list</div>
+        <div className='flex flex-col items-center w-full'>
+          {todoList.length ? (
+            todoList.map((todo) => (
+              <Mark key={todo.id} todo={todo} getTodoList={getTodoList} />
+            ))
+          ) : (
+            <hr className='border-3 mt-0 mb-3 border-white' />
+          )}
+        </div>
+        <AddMarkInput onSubmitHandler={onSubmitHandler} />
+        <div className='mt-36'>
+          <button
+            className='rounded bg-black text-white text-sm p-1'
+            onClick={onLogout}
+          >
+            로그아웃
+          </button>
+        </div>
       </div>
-      {todoList.length ? (
-        todoList.map((todo) => (
-          <Mark key={todo.id} todo={todo} getTodoList={getTodoList} />
-        ))
-      ) : (
-        <hr className='border-3 mt-0 mb-3 border-white' />
-      )}
-
-      <AddMarkInput onSubmitHandler={onSubmitHandler} />
     </>
   );
 };

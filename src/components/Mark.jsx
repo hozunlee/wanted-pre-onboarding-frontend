@@ -56,7 +56,7 @@ const Mark = ({ todo, getTodoList }) => {
   };
 
   return (
-    <div className='group mb-1 box-border cursor-pointer rounded border-2 border-cyan-400 bg-white p-1 hover:bg-gray-50'>
+    <div className='  group mb-1 box-border cursor-pointer rounded border-2 border-yellow-400 bg-white p-1 hover:bg-gray-50 w-72'>
       {isEditing ? (
         <>
           <form action='' className='flex'>
@@ -68,24 +68,24 @@ const Mark = ({ todo, getTodoList }) => {
             />
             <button
               onClick={onUpdate}
-              className='mb-1 rounded-full bg-blue-400 p-2 hover:bg-blue-500'
+              className='mr-2 mb-1 rounded-full bg-blue-400 p-2 hover:bg-blue-500'
             >
-              <PencilSquareIcon className='w-4 h-4 text-white' />
+              <PencilSquareIcon className='w-6 text-white' />
             </button>
           </form>
         </>
       ) : (
-        <div className='flex'>
+        <div className='flex w-full items-center '>
+          <input
+            className='m-1 w-10'
+            onClick={onUpdateCheckBox}
+            type='checkbox'
+            name='isUpdateCheck'
+            id='isUpdateCheck'
+            defaultChecked={isCheck}
+          />
+
           <div>{todo.todo}</div>
-          <div>
-            <input
-              onClick={onUpdateCheckBox}
-              type='checkbox'
-              name='isUpdateCheck'
-              id='isUpdateCheck'
-              defaultChecked={isCheck}
-            />
-          </div>
         </div>
       )}
 
