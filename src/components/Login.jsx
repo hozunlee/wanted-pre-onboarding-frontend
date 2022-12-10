@@ -31,8 +31,8 @@ const Login = () => {
       console.log('res :>> ', res);
       if (!window.localStorage.getItem('userJWT')) {
         window.localStorage.setItem('userJWT', res.data.access_token);
-        addJWT({ JWT: res.data.access_token });
       }
+      addJWT({ JWT: res.data.access_token });
       alert('로그인에 성공했습니다.');
       navigate('/todo');
     } catch (error) {

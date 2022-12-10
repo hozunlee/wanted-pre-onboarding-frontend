@@ -40,7 +40,8 @@ const Todo = () => {
   };
 
   useEffect(() => {
-    if (!JWTInfo.JWT) navigate('/');
+    console.log('JWTInfo :>> ', JWTInfo);
+    if (!JWTInfo?.JWT) navigate('/');
     else {
       const ctl = new AbortController();
       const { signal } = ctl;
