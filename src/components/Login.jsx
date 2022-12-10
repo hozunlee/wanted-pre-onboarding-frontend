@@ -65,29 +65,43 @@ const Login = () => {
 
   return (
     <>
-      <div>hojun dev</div>
-      <form>
-        <input
-          onChange={onChangeId}
-          type='text'
-          placeholder='이메일 주소'
-          required
-        />
-        <input
-          onChange={onChangePw}
-          type='password'
-          placeholder='비밀번호'
-          required
-        />
-        <button onClick={onLogin} disabled={!loginCondition}>
-          로그인
-        </button>
-      </form>
-
-      <div>
-        <button onClick={onSignUp} disabled={!loginCondition}>
-          회원가입
-        </button>
+      <div className='bg-white items-center text-center'>
+        <div className='mx-16 mt-16 text-5xl'>살아갈 결심</div>
+        <div className='m-3'>To-Do list</div>
+        <form className=''>
+          <div className='  flex flex-col justify-center items-center w-full'>
+            <input
+              className='border block w-auto my-3 p-1 rounded-lg'
+              onChange={onChangeId}
+              type='text'
+              placeholder='이메일 주소'
+              required
+            />
+            <input
+              className='border block w-auto my-3 p-1 rounded-lg'
+              onChange={onChangePw}
+              type='password'
+              placeholder='비밀번호'
+              required
+            />
+          </div>
+          <button
+            className='border rounded-full w-36 m-3 h-10 bg-blue-500 text-white disabled:bg-gray-200'
+            onClick={onLogin}
+            disabled={!loginCondition}
+          >
+            로그인
+          </button>
+        </form>
+        <div>
+          <button
+            className='border rounded-full w-36 h-10 bg-yellow-500 text-white disabled:bg-gray-200 '
+            onClick={onSignUp}
+            disabled={!loginCondition}
+          >
+            회원가입
+          </button>
+        </div>
       </div>
     </>
   );
