@@ -8,7 +8,7 @@ const Main = () => {
   const { JWTInfo } = useUserInfo();
 
   return (
-    <>{JWTInfo.JWT ? <Navigate to='/todo' replace={true} /> : <Login />}</>
+    <>{JWTInfo?.JWT ? <Navigate to='/todo' replace={true} /> : <Login />}</>
   );
 };
 

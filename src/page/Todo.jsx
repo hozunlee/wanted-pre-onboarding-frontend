@@ -6,16 +6,18 @@ import AddMarkInput from '../components/AddMarkInput';
 import Mark from '../components/Mark';
 
 import { useUserInfo } from '../hooks/userInfo-context';
+import { useNavigate } from 'react-router';
 
 const Todo = () => {
+  const navigate = useNavigate();
   const [todoList, setTodoList] = useState([]);
 
-  const { JWTInfo } = useUserInfo();
+  const { JWTInfo, addJWT } = useUserInfo();
 
   const onSubmitHandler = (todoWord) => {
     (async () => {
       try {
-        const { data } = await apis.createTodo({ todo: todoWord });
+        const { data } = await apis.createTodo({ todo: todoWord }, JWTInfo.JWT);
         todoList.push(data);
         setTodoList([...todoList]);
       } catch (e) {
@@ -29,7 +31,14 @@ const Todo = () => {
     setTodoList(data);
   };
 
-  console.log('JWTInfo :>> ', JWTInfo);
+  const onLogout = (params) => {
+    if (confirm('로그아웃 하시려구요?')) {
+      window.localStorage.removeItem('userJWT');
+      addJWT(null);
+      navigate('/');
+    }
+  };
+
   useEffect(() => {
     const ctl = new AbortController();
     const { signal } = ctl;
@@ -42,7 +51,9 @@ const Todo = () => {
 
   return (
     <>
-      <div className='text-xl bg-orange-900'>나는야 투두</div>
+      <div className='text-xl bg-orange-900'>
+        나는야 투두 <button onClick={onLogout}>로그아웃</button>
+      </div>
       {todoList.length ? (
         todoList.map((todo) => (
           <Mark key={todo.id} todo={todo} getTodoList={getTodoList} />

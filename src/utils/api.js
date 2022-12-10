@@ -39,7 +39,16 @@ export const apis = {
       headers: { Authorization: `Bearer  ${JWTInfo}` },
       signal,
     }), //Todo page 접속 시
-  createTodo: (todo) => api.post('todos', todo), // 새로운 TODo 추가
-  updateTodo: (id, updateTodo) => api.put(`/todos/${id}`, updateTodo),
-  deleteTodo: (id) => api.delete(`/todos/${id}`),
+  createTodo: (todo, JWTInfo) =>
+    api.post('todos', todo, {
+      headers: { Authorization: `Bearer  ${JWTInfo}` },
+    }), // 새로운 TODo 추가
+  updateTodo: (id, updateTodo, JWTInfo) =>
+    api.put(`/todos/${id}`, updateTodo, {
+      headers: { Authorization: `Bearer  ${JWTInfo}` },
+    }),
+  deleteTodo: (id, JWTInfo) =>
+    api.delete(`/todos/${id}`, {
+      headers: { Authorization: `Bearer  ${JWTInfo}` },
+    }),
 };

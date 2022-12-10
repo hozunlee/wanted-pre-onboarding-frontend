@@ -9,16 +9,20 @@ const Mark = ({ todo, getTodoList }) => {
   const [isEditing, toggleEditing] = useReducer((pre) => !pre, !todo.id);
   const urlRef = useRef(null);
 
-  const { JWTInfo, addJWT } = useUserInfo();
+  const { JWTInfo } = useUserInfo();
   // console.log('🚀 ~ file: Mark.jsx:13 ~ Mark ~ JWTInfo', JWTInfo);
 
   const onUpdate = async (e) => {
     e.preventDefault();
     try {
-      await apis.updateTodo(todo.id, {
-        todo: urlRef.current.value ?? todo.todo,
-        isCompleted: isCheck,
-      });
+      await apis.updateTodo(
+        todo.id,
+        {
+          todo: urlRef.current.value ?? todo.todo,
+          isCompleted: isCheck,
+        },
+        JWTInfo.JWT
+      );
       getTodoList();
       toggleEditing();
     } catch (e) {
@@ -29,10 +33,14 @@ const Mark = ({ todo, getTodoList }) => {
   const onUpdateCheckBox = async () => {
     setIsCheck((prev) => !prev);
     try {
-      await apis.updateTodo(todo.id, {
-        todo: urlRef.current?.value ?? todo.todo,
-        isCompleted: !isCheck,
-      });
+      await apis.updateTodo(
+        todo.id,
+        {
+          todo: urlRef.current?.value ?? todo.todo,
+          isCompleted: !isCheck,
+        },
+        JWTInfo.JWT
+      );
     } catch (e) {
       console.error(e);
     }
@@ -40,7 +48,7 @@ const Mark = ({ todo, getTodoList }) => {
 
   const onDelete = async () => {
     try {
-      await apis.deleteTodo(todo.id);
+      await apis.deleteTodo(todo.id, JWTInfo.JWT);
       getTodoList();
     } catch (e) {
       console.error(e);
