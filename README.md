@@ -5,7 +5,7 @@
 살아갈 결심 서비스는 머리 속을 멤도는 수 많은 결심을 정의하고, 결심을 내 손으로 마무리 짓는데 촛점을 맞춥니다.
 
 ## live-Demo
-https://bit.ly/3VMJ54L
+https://creative-creponne-fbbdfb.netlify.app/
 
 ---
 
