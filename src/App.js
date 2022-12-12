@@ -10,11 +10,12 @@ import Todo from './page/Todo';
 import { UserInfoProvider } from './hooks/userInfo-context';
 
 function App() {
-  RouteChangeTracker();
+  // RouteChangeTracker();
   return (
     <>
       <UserInfoProvider>
         <Router>
+          <RouteChangeTracker />
           <Routes>
             <Route index path='/' element={<Main />} />
             <Route path='/todo' element={<Todo />} />
