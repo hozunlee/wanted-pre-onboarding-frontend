@@ -7,8 +7,9 @@ import Mark from '../components/Mark';
 
 import { useUserInfo } from '../hooks/userInfo-context';
 import { useNavigate } from 'react-router';
+import Sentence from '../components/Sentence';
 
-const Todo = () => {
+const Todo = ({ repository }) => {
   const navigate = useNavigate();
   const [todoList, setTodoList] = useState([]);
 
@@ -58,6 +59,7 @@ const Todo = () => {
       <div className='items-center text-center'>
         <div className='text-3xl mx-16 mt-16 font-extrabold'>살아갈 결심</div>
         <div className='m-3'>To-Do list</div>
+        <Sentence repository={repository} />
         <div className='flex flex-col items-center w-full'>
           {todoList.length ? (
             todoList.map((todo) => (

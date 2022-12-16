@@ -8,8 +8,9 @@ import Main from './page/Main';
 import Todo from './page/Todo';
 
 import { UserInfoProvider } from './hooks/userInfo-context';
+import AddWord from './components/AddWord';
 
-function App() {
+function App({ repository }) {
   // RouteChangeTracker();
   return (
     <>
@@ -18,7 +19,8 @@ function App() {
           <RouteChangeTracker />
           <Routes>
             <Route index path='/' element={<Main />} />
-            <Route path='/todo' element={<Todo />} />
+            <Route path='/todo' element={<Todo repository={repository} />} />
+            <Route path='/add' element={<AddWord repository={repository} />} />
           </Routes>
         </Router>
       </UserInfoProvider>
