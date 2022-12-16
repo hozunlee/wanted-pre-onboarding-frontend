@@ -33,8 +33,10 @@ const Sentence = ({ repository }) => {
   }, [repository]);
 
   function getNewQuote() {
+    setLoading(true);
     let todaysQuote1 = data[Math.floor(Math.random() * data.length)];
     setTodaysQuote(todaysQuote1);
+    setLoading(false);
   }
 
   return (
@@ -43,9 +45,12 @@ const Sentence = ({ repository }) => {
         <div>로딩중</div>
       ) : (
         <div className='w-full flex mb-10 flex-col content-center justify-center'>
-          <div className='pb-10 px-4 '>{todaysQuote.item}</div>
-          <div className=''>{todaysQuote.from}</div>
-          <div>{todaysQuote.author}</div>
+          <div className='pb-10 px-4 text-justify '>{todaysQuote.item}</div>
+          <div className=' text-gray-500 text-sm'>
+            <p className='text-gray-500  text-xs'>from</p>
+            {todaysQuote.from}
+          </div>
+          <div className='text-sm text-gray-500'>{todaysQuote.author}</div>
           <button
             className='rounded bg-black text-white text-sm p-1'
             onClick={() => getNewQuote()}
