@@ -59,7 +59,7 @@ const Todo = ({ repository }) => {
       <div className='items-center text-center'>
         <div className='text-3xl mx-16 mt-16 font-extrabold'>살아갈 결심</div>
         <div className='m-3'>To-Do list</div>
-        <div className='flex flex-col items-center w-full'>
+        <div className='flex flex-col items-center w-full '>
           {todoList.length ? (
             todoList.map((todo) => (
               <Mark key={todo.id} todo={todo} getTodoList={getTodoList} />
@@ -67,17 +67,18 @@ const Todo = ({ repository }) => {
           ) : (
             <hr className='border-3 mt-0 mb-3 border-white' />
           )}
+          <AddMarkInput onSubmitHandler={onSubmitHandler} />
         </div>
-        <AddMarkInput onSubmitHandler={onSubmitHandler} />
-        <div className='mt-36'>
+        <div className='mt-10 mb-5 p-1 border'>
+          <div />
           <Sentence repository={repository} />
-          <button
-            className='rounded bg-black text-white text-sm p-1'
-            onClick={onLogout}
-          >
-            로그아웃
-          </button>
         </div>
+        <button
+          className='rounded bg-black text-white text-sm p-1'
+          onClick={onLogout}
+        >
+          로그아웃
+        </button>
       </div>
     </>
   );

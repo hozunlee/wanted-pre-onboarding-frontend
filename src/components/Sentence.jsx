@@ -45,6 +45,7 @@ const Sentence = ({ repository }) => {
         <div>로딩중</div>
       ) : (
         <div className='w-full flex mb-10 flex-col content-center justify-center'>
+          <div>🧀</div>
           <div className='pb-10 px-4 text-justify '>{todaysQuote.item}</div>
           <div className=' text-gray-500 text-sm'>
             <p className='text-gray-500  text-xs'>from</p>
@@ -55,7 +56,7 @@ const Sentence = ({ repository }) => {
             className='rounded bg-black text-white text-sm p-1'
             onClick={() => getNewQuote()}
           >
-            new cake🧀
+            new cake🍩
           </button>
         </div>
       )}
