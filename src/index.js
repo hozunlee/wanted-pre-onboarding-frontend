@@ -10,7 +10,6 @@ const TRACKING_ID = process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID; // 발�
 ReactGA.initialize(TRACKING_ID);
 
 const repository = new Repository();
-console.log('🚀 ~ file: index.js:13 ~ repository', repository);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
