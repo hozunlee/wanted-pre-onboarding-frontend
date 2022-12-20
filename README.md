@@ -1,4 +1,4 @@
-# 살아갈 결심
+# 살아갈 결심 ( To-Do list ) 
 
 우리는 살아가며 수 많은 결심을 합니다. 
 
@@ -43,14 +43,25 @@ https://creative-creponne-fbbdfb.netlify.app/
 - 결심 추가 / 삭제 / 수정 기능 구현
 - 완료 체크박스 구현
 
-3. 부가기능
+3. 살아갈 문장 기능
+
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/60101732/208664267-1101c9c0-698d-49c3-9b3b-5cca9437dd26.png">
+
+- firebase 연동 
+- 살아갈 문장 기능 추가
+- new cake 버튼 클릭으로 새로운 문장 클릭
+
+4. 부가기능
 
 <center><img src="https://user-images.githubusercontent.com/60101732/206908266-20920c82-ae11-47e5-a5fd-149c7ca5754a.gif" width="500" height="500"></center>
 
 - 로그아웃 기능 구현
+- 살아갈 문장을 관리할 `admin` page 제작 
+
+
 
 
 ---
 기술스택
 
-`javascript` `react` `tailwindCSS` `contextAPI` `heroIcon` 
+`javascript` `react` `tailwindCSS` `contextAPI` `heroIcon` `firebase`
