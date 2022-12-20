@@ -48,7 +48,7 @@ https://creative-creponne-fbbdfb.netlify.app/
 <img width="500" alt="image" src="https://user-images.githubusercontent.com/60101732/208664267-1101c9c0-698d-49c3-9b3b-5cca9437dd26.png">
 
 - firebase 연동 
-- 살아갈 문장 기능 추가
+- 살아갈 문장 기능 추가 ( 모바일 CSS 적용 )
 - new cake 버튼 클릭으로 새로운 문장 클릭
 
 4. 부가기능
