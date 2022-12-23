@@ -16,25 +16,44 @@ const AddWord = ({ updateInfo }) => {
       item: itemRef.current.value || '',
     };
     updateInfo(info);
-    formRef.current.reset();
+    itemRef.current.value = '';
   };
 
   return (
-    <div>
-      <form ref={formRef}>
+    <div className=''>
+      <form ref={formRef} className='flex-col flex items-center w-full'>
         <label htmlFor=''>
           author
-          <input ref={authorRef} type='text' />
+          <input
+            ref={authorRef}
+            type='text'
+            autoComplete='on'
+            className='border ml-2 mb-2'
+          />
         </label>
         <label htmlFor=''>
           from
-          <input ref={fromRef} type='text' />
+          <input
+            ref={fromRef}
+            type='text'
+            autoComplete='on'
+            className='border ml-2 mb-2'
+          />
         </label>
         <label htmlFor=''>
           item
-          <input ref={itemRef} type='text' />
+          <textarea
+            ref={itemRef}
+            type='text'
+            className='border ml-2 mb-2 h-24 w-full '
+          />
         </label>
-        <button onClick={onAdd}>저장</button>
+        <button
+          onClick={onAdd}
+          className='border px-3 rounded bg-green-500 mb-10'
+        >
+          저장
+        </button>
       </form>
     </div>
   );
